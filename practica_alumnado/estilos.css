@@ -1,0 +1,218 @@
+*{
+    font-size: larger;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    margin: auto;
+}
+
+body{
+    background-color: aquamarine;
+
+}
+
+form{
+    padding: 1%;
+}
+
+.datospersonales{
+    background-color: lightblue;
+    padding: 2%;
+    margin: 1%;
+}
+
+.datosacademicos{
+    background-color: lightgreen;
+    padding: 2%;
+    margin: 1%;
+}
+
+.datoseducamos{
+    background-color: lightcoral;
+    padding: 2%;
+    margin: 1%;
+}
+
+.enviar{
+    background-color: lightgray;
+    padding: 2%;
+    margin: 1%;
+}
+
+.pagina-resultados {
+    min-height: 100vh;
+    margin: 0;
+    padding: 48px 20px;
+    background: #edf4f0;
+    color: #263b32;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    text-align: left;
+}
+
+.lista-resultados {
+    display: grid;
+    width: min(100%, 720px);
+    gap: 14px;
+    margin: 0 auto;
+}
+
+.resultado-alumno {
+    padding: 22px 26px;
+    border: 1px solid #d4e3da;
+    border-left: 5px solid #4f9272;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 5px 16px rgb(38 59 50 / 6%);
+    font-size: 1rem;
+    line-height: 1.9;
+    text-align: left;
+}
+
+.resultado-alumno hr {
+    width: 100%;
+    margin: 14px 0 0;
+    border: 0;
+    border-top: 1px solid #e6eee9;
+}
+
+@media (max-width: 520px) {
+    .pagina-resultados {
+        padding: 24px 14px;
+    }
+
+    .resultado-alumno {
+        padding: 18px;
+    }
+}
+
+.pagina-alumnos {
+    min-height: 100vh;
+    margin: 0;
+    padding: 56px 24px;
+    background: #f1f5f3;
+    color: #20352e;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    text-align: left;
+}
+
+.pagina-alumnos * {
+    box-sizing: border-box;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.listado-alumnos {
+    width: min(100%, 900px);
+}
+
+.encabezado-alumnos {
+    margin-bottom: 32px;
+}
+
+.pagina-alumnos .etiqueta-alumnos {
+    margin: 0 0 8px;
+    color: #37836a;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.pagina-alumnos .encabezado-alumnos h1 {
+    margin: 0;
+    color: #20352e;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.1;
+}
+
+.pagina-alumnos .descripcion-alumnos {
+    margin: 12px 0 0;
+    color: #62736c;
+    font-size: 1rem;
+}
+
+.tarjetas-alumnos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 16px;
+}
+
+.pagina-alumnos .tarjeta-alumno {
+    margin: 0;
+    padding: 22px;
+    border: 1px solid #dce6e0;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 4px 14px rgb(32 53 46 / 5%);
+}
+
+.identidad-alumno {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.pagina-alumnos .icono-alumno {
+    display: grid;
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    place-items: center;
+    border-radius: 50%;
+    background: #e0f1e9;
+    color: #28684f;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.pagina-alumnos .identidad-alumno h2 {
+    margin: 0;
+    color: #20352e;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.pagina-alumnos .identidad-alumno p {
+    margin: 4px 0 0;
+    color: #718078;
+    font-size: 0.875rem;
+}
+
+.datos-alumno {
+    display: flex;
+    gap: 32px;
+    margin: 22px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid #edf1ee;
+}
+
+.datos-alumno div {
+    display: grid;
+    gap: 5px;
+}
+
+.pagina-alumnos .datos-alumno dt {
+    color: #718078;
+    font-size: 0.8rem;
+}
+
+.pagina-alumnos .datos-alumno dd {
+    margin: 0;
+    color: #20352e;
+    font-weight: 700;
+}
+
+.pagina-alumnos .sin-alumnos {
+    margin: 0;
+    padding: 24px;
+    border: 1px dashed #b8cbc0;
+    border-radius: 8px;
+    color: #62736c;
+    text-align: center;
+}
+
+@media (max-width: 520px) {
+    .pagina-alumnos {
+        padding: 36px 18px;
+    }
+}
+

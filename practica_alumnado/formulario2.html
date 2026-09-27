@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Document</title>
+</head>
+<body>
+    <form action="bbdd.php" method="post">
+
+        <div class="datospersonales">
+            
+            <h4>Datos Personales</h4>
+            <br>
+
+            <input type="text" name="nombre" placeholder="Nombre">
+
+            <input type="text" name="apellidos" placeholder="Apellidos">
+
+            <input type="date" name="fechaNac" placeholder="Fecha de nacimiento">
+
+        </div>
+
+        <div class="datosacademicos">
+
+            <h4>Curso de Matriculación</h4>
+            <br>
+
+            <input type="radio" name="curso1" value="1" checked placeholder="Curso de matriculación (1º de la ESO)"> 1º
+
+            <input type="radio" name="curso1" value="2" placeholder="Curso de matriculación (2º de la ESO)"> 2º
+
+            <input type="radio" name="curso1" value="3" placeholder="Curso de matriculación (3º de la ESO)"> 3º
+
+            <input type="radio" name="curso1" value="4" placeholder="Curso de matriculación (4º de la ESO)"> 4º
+
+        </div>
+
+        <div class="datoseducamos">
+
+            <h4>Datos de Usuario de Educamos</h4>
+            <br>
+
+            <input type="email" name="email" placeholder="Email de Educamos">
+
+            <input type="password" name="pass" placeholder="Contraseña de Educamos">
+
+        </div>
+       
+        <input type="submit" value="Enviar" class="enviar">
+
+    </form>
+
+</body>
+</html>
