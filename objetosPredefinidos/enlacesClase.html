@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usando una clase</title>
+    <style>
+        .externo {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enlaces externos usando una clase</h1>
+    <ul>
+        <li><a href="http://www.google.com">http://www.google.com</a></li>
+        <li><a href="/tutorial.html">/tutorial.html</a></li>
+        <li><a href="local/path">local/path</a></li>
+        <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li>
+        <li><a href="http://nodejs.org">http://nodejs.org</a></li>
+        <li><a href="https://internal.com/test">https://internal.com/test</a></li>
+    </ul>
+
+    <script>
+        document.querySelectorAll('a[href*="://"]').forEach(enlace => {
+            enlace.classList.add('externo');
+        });
+    </script>
+</body>
+</html>

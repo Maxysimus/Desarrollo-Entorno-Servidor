@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números primos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 30px;
+            color: #1d1d1d;
+        }
+        .contenedor {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input {
+            width: 200px;
+            padding: 8px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        button {
+            padding: 10px 16px;
+            font-size: 1rem;
+            cursor: pointer;
+            background: #1f7ae0;
+            color: white;
+            border: none;
+            border-radius: 6px;
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td {
+            border: 1px solid #d0d0d0;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .mensaje {
+            margin-top: 20px;
+            color: #b00020;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Números primos</h1>
+        <label for="numero">Introduce un número:</label>
+        <input type="number" id="numero" min="1" placeholder="Ejemplo: 7">
+        <button id="generar">Mostrar primos</button>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function esPrimo(numero) {
+            if (numero <= 1) return false;
+            if (numero === 2) return true;
+            if (numero % 2 === 0) return false;
+
+            for (let i = 3; i * i <= numero; i += 2) {
+                if (numero % i === 0) return false;
+            }
+
+            return true;
+        }
+
+        function obtenerPrimosHasta(numero) {
+            const primos = [];
+
+            for (let i = 1; i <= numero; i++) {
+                if (esPrimo(i) || i === 1) {
+                    primos.push(i);
+                }
+            }
+
+            return primos;
+        }
+
+        document.getElementById('generar').addEventListener('click', function () {
+            const numeroInput = document.getElementById('numero');
+            const resultado = document.getElementById('resultado');
+            const valor = Number(numeroInput.value);
+
+            if (!valor || valor < 1) {
+                resultado.innerHTML = '<div class="mensaje">Introduce un número válido mayor o igual que 1.</div>';
+                return;
+            }
+
+            const primos = obtenerPrimosHasta(valor);
+            const filas = Math.ceil(primos.length / 10);
+
+            let tabla = '<table>';
+            for (let fila = 0; fila < filas; fila++) {
+                tabla += '<tr>';
+                for (let col = 0; col < 10; col++) {
+                    const index = fila * 10 + col;
+                    if (index < primos.length) {
+                        tabla += '<td>' + primos[index] + '</td>';
+                    } else {
+                        tabla += '<td></td>';
+                    }
+                }
+                tabla += '</tr>';
+            }
+            tabla += '</table>';
+
+            resultado.innerHTML = tabla;
+        });
+    </script>
+</body>
+</html>

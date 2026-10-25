@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código Morse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f4f4f4;
+            color: #222;
+        }
+        .contenedor {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        h1 {
+            text-align: center;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .resultado {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eef7ff;
+            border-left: 5px solid #1f7ae0;
+            border-radius: 6px;
+            white-space: pre-wrap;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Código Morse</h1>
+        <p>Introduce un texto o un código Morse y el programa lo convertirá automáticamente.</p>
+    </div>
+
+    <script>
+        const MORSE = {
+            'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
+            'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
+            'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+            'Y': '-.--', 'Z': '--..',
+            '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
+            '6': '-....', '7': '--...', '8': '---..', '9': '----.',
+            '.': '.-.-.-', ',': '--..--', '?': '..--..', "'": '.----.', '!': '-.-.--', '/': '-..-.',
+            '(' : '-.--.', ')' : '-.--.-', '&': '.-...', ':': '---...', ';': '-.-.-.', '=': '-...-',
+            '+': '.-.-.', '-': '-....-', '_': '..--.-', '"': '.-..-.', '$': '...-..-', '@': '.--.-.',
+            '¿': '..-.-', '¡': '--...-'
+        };
+
+        const MORSE_INVERSO = Object.fromEntries(
+            Object.entries(MORSE).map(([letra, codigo]) => [codigo, letra])
+        );
+
+        function esCodigoMorse(texto) {
+            const valor = texto.trim();
+            if (!valor) return false;
+            const palabras = valor.split(/\s{2,}/);
+            return palabras.every(palabra => {
+                if (palabra === '') return false;
+                const partes = palabra.split(/\s+/).filter(Boolean);
+                return partes.length > 0 && partes.every(simbolo => {
+                    if (simbolo === '/') return true;
+                    return /^[.-]+$/.test(simbolo);
+                });
+            });
+        }
+
+        function textoAMorse(texto) {
+            return texto
+                .toUpperCase()
+                .split(' ')
+                .map(palabra => palabra.split('').map(caracter => MORSE[caracter] || caracter).join(' '))
+                .join('  ');
+        }
+
+        function morseATexto(texto) {
+            const palabras = texto.trim().split(/\s{2,}/);
+            return palabras.map(palabra => {
+                const simbolos = palabra.trim().split(/\s+/).filter(Boolean);
+                return simbolos.map(simbolo => {
+                    if (simbolo === '/') return ' ';
+                    return MORSE_INVERSO[simbolo] || '?';
+                }).join('');
+            }).join(' ');
+        }
+
+        const entrada = window.prompt('Introduce texto natural o código Morse:');
+        const contenedor = document.querySelector('.contenedor');
+
+        if (entrada === null || entrada.trim() === '') {
+            contenedor.innerHTML += '<div class="resultado">No se introdujo ningún valor.</div>';
+        } else {
+            const resultado = esCodigoMorse(entrada) ? morseATexto(entrada) : textoAMorse(entrada);
+            contenedor.innerHTML += '<div class="resultado">' + resultado + '</div>';
+        }
+    </script>
+</body>
+</html>
